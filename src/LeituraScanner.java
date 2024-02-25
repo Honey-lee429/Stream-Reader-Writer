@@ -39,4 +39,11 @@ public class LeituraScanner {
         scanner.close();
 
     }
+
+    /*
+    * As classes Scanner e InputStreamReader possuem sobrecargas de construtores que recebem como argumento
+    * qual charset será utilizado para fazer a transformação dos bytes em strings. De modo análogo para escrita,
+    *  a classe PrintWriter também permite informar qual charset será utilizado para transformar
+    * a string nos bytes específicos.
+     */
 }
