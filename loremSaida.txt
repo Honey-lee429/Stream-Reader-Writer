@@ -1,0 +1,79 @@
+Stream vs Reader and writer
+Java's stream-based I/O is built upon four abstract classes: InputStream, OutputStream, Reader, and Writer. They are used to create several concrete stream subclasses.
+
+InputStream and OutputStream are designed for byte streams. Reader and Writer are designed for character streams.
+
+The byte stream classes and the character stream classes form separate hierarchies.
+
+You use the character stream classes when working with characters or strings. You use the byte stream classes when working with bytes or other binary objects.
+
+InputStream
+The byte stream classes handles byte-oriented I/O. The byte stream classes are topped by InputStream and OutputStream.
+
+InputStream is an abstract class that defines Java's model of streaming byte input. It implements the Closeable interface.
+
+Most of the methods in this class will throw an IOException on error conditions.
+
+InputStream has the following methods.
+
+int available( )
+Returns the number of bytes available for reading.
+void close( )
+Closes the input source.
+void mark(int numBytes)
+Places a mark at the current point that will remain valid until numBytes bytes are read.
+boolean markSupported( )
+Returns true if mark( )/reset( ).
+int read( )
+Returns an integer representation of the next available byte of input. -1 is returned if file ends.
+int read(byte buffer[ ])
+Read up to buffer.length bytes into buffer and returns the actual number of bytes that were successfully read. -1 is returned when the end of the file is encountered.
+int read(byte buffer[ ], int offset, int numBytes)
+Read up to numBytes bytes into buffer starting at buffer[offset], returning the number of bytes successfully read. -1 is returned when the end of the file is encountered.
+void reset( )
+Resets the input pointer to the previously set mark.
+long skip(long numBytes)
+Skip numBytes bytes of input, returning the number of bytes actually ignored.
+OutputStream
+OutputStream is an abstract class that defines streaming byte output. It implements the Closeable and Flushable interfaces.
+
+Methods from OutputStream:
+
+void close( ) Closes the output stream.
+void flush( ) Flushes the output state so that any buffers are cleared.
+void write(int b) Writes a single byte to an output stream.
+void write(byte buffer[ ]) Writes a complete array of bytes to an output stream.
+void write(byte buffer[ ], int offset, int numBytes) Writes a subrange of numBytes bytes from the array buffer, beginning at buffer[offset].
+Reader
+The Character Streams include direct I/O support for characters. At the top of the character stream hierarchies are the Reader and Writer abstract classes.
+
+Reader is an abstract class that defines Java's model of streaming character input.
+
+It implements the Closeable and Readable interfaces.
+
+Methods from Reader:
+
+abstract void close( ) Closes the input source.
+void mark(int numChars) Places a mark at the current point that will remain valid until numChars characters are read.
+boolean markSupported( ) Returns true if mark( )/reset( ) are supported.
+int read( ) Returns an integer representation of the next available character. -1 is returned when the end of the file is encountered.
+int read(char buffer[ ]) Reads up to buffer.length characters into buffer and returns the actual number of characters that were successfully read. -1 is returned when the end of the file is encountered.
+abstract int read(char buffer[ ], int offset, int numChars) Reads up to numChars characters into buffer starting at buffer[offset], returning the number of characters successfully read. -1 is returned when the end of the file is encountered.
+boolean ready( ) Returns true if the next input request is ready.
+void reset( ) Resets the input pointer to the previously set mark.
+long skip(long numChars) Skips numChars characters of input, returning the number of characters actually skipped.
+Writer
+Writer is an abstract class that defines streaming character output. It implements the Closeable, Flushable, and Appendable interfaces.
+
+Methods from Writer:
+
+Writer append(char ch) Writes ch to the writer.
+Writer append(CharSequence chars) Writes chars to the end.
+Writer append(CharSequence chars, int begin, int end) Writes the subrange of chars specified by begin and end-1.
+abstract void close( ) Closes the output stream.
+abstract void flush( ) Flushes the output buffers.
+void write(int ch) Writes a single character to the output stream.
+void write(char buffer[ ]) Writes a complete array of characters to the output stream.
+abstract void write(char buffer[ ], int offset, int numChars) Writes a subrange of numChars characters from the array buffer, beginning at buffer[offset] to the invoking output stream.
+void write(String str) Writes str to the invoking output stream.
+void write(String str, int offset, int numChars) Writes a subrange of numChars characters from the string str, beginning at the specified offset.
